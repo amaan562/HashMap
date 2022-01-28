@@ -58,10 +58,11 @@ public class HashMap<T,U>{
 	}
 	private int hash(T x){
 		int idx = hash1(x);
+		int h1 = hash1(x),h2 = hash2(x);
 		int i=1;
 		while(key[idx]!=null){
 			if(key[idx].equals(x))	return idx;
-			idx = (hash1(x) + i*hash2(x))%max_size;
+			idx = (h1 + i*h2)%max_size;
 			i++;
 		} 
 		return idx;
